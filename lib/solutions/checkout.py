@@ -1,4 +1,4 @@
-import itertools
+from itertools import groupby
 import re
 
 def isdirty(s):
@@ -17,11 +17,12 @@ def checkout(skus):
 
   offers = { 'A': [(3, 139)], 'B': [(2, 45)]}
   costs = { 'A': 50, 'B': 30, 'C': 20, 'D': 15 }
-  a_skus = sorted(skus.split(''))
+  a_skus = sorted(skus.split())
 
   val = 0
-  for k, g in a_skus.groupby(a_skus):  # identity lambda as def
+  for k, g in groupby(a_skus):  # identity lambda as def
       count = len(list(g))
+      print("considering %r, count %d" % (k, count))
       # consider offers first
       if k in offers:
           # hmm, possible multiple offers.. order.. best val..
