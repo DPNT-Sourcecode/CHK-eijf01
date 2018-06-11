@@ -118,6 +118,11 @@ def checkout(skus):
                     counts[k] -= quantity  # outer context
 
     # group offers
+    costs_ordered = sorted(costs, key=lambda kvp: kvp[1]);
+
+    def order_by_price(items):
+        return [k for k, v in costs_ordered.items() if k in items]
+
     def apply_group_offer(items, cost):
         for i in items:
             counts[i] -= 1
@@ -125,18 +130,26 @@ def checkout(skus):
 
     for k, count in counts.items():
         if k in group_offers:
-            applying_offer = True;
             for min_p, cost, p_set in group_offers[k]:
+                # sort set by price descending to ensure most expensive set
+                # is applied first
+                p_set_ordered = reverse(order_by_price(p_set))
+                applying_offer = True;
                 while applying_offer
                     gi_purchased_count = 0
                     gi_purchased = []
-                    for i in p_set:
-                        if counts[i] > 0:
+                    applied = False
+                    for i in p_set_ordered:
+                        while counts[i] > 0:
+                            # drain most expensive first
                             gi_purchased_count += 1
                             gi_purchased.append(i)
                             if gi_purchased_count == min_p:
                                 apply_group_offer(gi_purchased, cost)
-                                break
+                                applied = True
+                    if not applied:
+                        # out of relevant basket items
+                        applying_offer = False
 
     # single item costs only remain
     for k, count in counts.items():

@@ -77,3 +77,12 @@ class TestCheckout(unittest.TestCase):
             (200 + 130 + 45 + 20 + 80 + 45 + 150 + 200 + 80 + 120 + 130 + 90) +
             (80 + 120 + 150))
 
+    def test_checkout_group_offers_one_p5(self):
+        self.assertEqual(checkout("STXYZ"), 45)
+
+    def test_checkout_group_offers_one_plus_p5_(self):
+        self.assertEqual(checkout("SSTTXXYYZZ")
+
+    def test_checkout_group_offers_two_p5(self):
+        self.assertEqual(checkout("SSTTXXYYZZ", )
+
