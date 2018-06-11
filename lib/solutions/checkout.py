@@ -17,7 +17,7 @@ def checkout(skus):
 
   offers = { 'A': [(3, 139)], 'B': [(2, 45)]}
   costs = { 'A': 50, 'B': 30, 'C': 20, 'D': 15 }
-  a_skus = sorted(skus.split())
+  a_skus = sorted(list(skus))
 
   val = 0
   for k, g in groupby(a_skus):  # identity lambda as def
@@ -28,7 +28,7 @@ def checkout(skus):
           # hmm, possible multiple offers.. order.. best val..
           for quantity, cost in offers[k]:
               print("considering offer on %r, %d for %d" % (k, quantity, cost))
-              while count > quanity:
+              while count > quantity:
                   val += cost
                   count -= quantity
       # single item cost
