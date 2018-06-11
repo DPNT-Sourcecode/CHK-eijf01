@@ -24,6 +24,9 @@ class TestCheckout(unittest.TestCase):
     def test_checkout_illegal2(self):
         self.assertEqual(checkout("AX"), -1)
 
+    def test_checkout_new_product(self):
+        self.assertEqual(checkout("EE"), 80)
+
     def test_checkout_bogof(self):
         self.assertEqual(checkout("BEE"), 80)
 

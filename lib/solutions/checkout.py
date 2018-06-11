@@ -44,11 +44,12 @@ def checkout(skus):
                   if len(freebies) > 0:
                       # reduce count(s) for given items
                       for p in freebies:
-                          counts[p] -= 1
+                          if p in counts:
+                              counts[p] -= 1
 
   # single item costs only remain
   for k, count in counts.items():
       val += (count * costs[k])
 
-#  print("returning %r for %r" % (val, skus))
+  print("returning %r for %r" % (val, skus))
   return val
