@@ -8,6 +8,7 @@ def isdirty(s):
     return True if re.search("[^A-Z]", s) else False
 
 
+#TODO run once only per test run!
 def build_state():
     def build_prices():
         prices = {}
@@ -19,6 +20,7 @@ def build_state():
                 prices[tks[0]] = tks[1]
         return prices
     return (build_prices())  # state tuple of prices, ...
+
 
 # noinspection PyUnusedLocal
 # skus = unicode string
