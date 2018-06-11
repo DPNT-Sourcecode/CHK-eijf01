@@ -3,7 +3,7 @@ import re
 import sys
 import os
 
-debug = 1
+debug = 0
 data_prices = "data.prices.txt"
 
 def isdirty(s):
@@ -133,7 +133,6 @@ def checkout(skus):
                 gi_purchased_count = 0
                 gi_purchased = []
                 applied = False
-                import pdb; pdb.set_trace()
                 for i in p_set_ordered:
                     if debug:
                         print("consider %r for group offer" % i)
