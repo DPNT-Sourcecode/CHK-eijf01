@@ -2,6 +2,6 @@
 # noinspection PyUnusedLocal
 # friend_name = unicode string
 def hello(friend_name = "Anonymous"):
-    s = "Hello, World!"
+    s = "Hello, " + friend_name + "!"
     print(s)
     return s
