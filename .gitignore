@@ -5,3 +5,5 @@ config/credentials.config
 *.pyc
 .DS_Store
 venv
+*~
+*.sw[po]
