@@ -123,11 +123,6 @@ def checkout(skus):
     def order_by_price(items):
         return [k for (k, v) in costs_ordered if k in items]
 
-    def apply_group_offer(items, cost):
-        for i in items:
-            counts[i] -= 1
-        val += cost
-
     for k, count in counts.items():
         if k in group_offers:
             for min_p, cost, p_set in group_offers[k]:
@@ -145,9 +140,11 @@ def checkout(skus):
                             gi_purchased_count += 1
                             gi_purchased.append(i)
                             if gi_purchased_count == min_p:
-                                apply_group_offer(gi_purchased, cost)
+                                for i in gi_purchased:
+                                    counts[i] -= 1
+                                val += cost
                                 applied = True
-                    if not applied:
+                    if applied:
                         # out of relevant basket items
                         applying_offer = False
 
