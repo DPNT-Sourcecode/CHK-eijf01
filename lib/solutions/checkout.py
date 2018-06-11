@@ -16,9 +16,9 @@ def build_state():
         prices = {}
         with open(os.path.join(os.getcwd(), "data", data_prices), 'r') as fo:
             for line in fo:
-                tks = line.split(':')
+                tks = line.rstrip('\n').split(':')
                 #if debug > 1:
-                print("adding product %r at price %d" % tks)
+                print("adding product %r at price %d" % (*tks))
                 prices[tks[0]] = tks[1]
         return prices
     return (build_prices())  # state tuple of prices, ...
