@@ -1,15 +1,18 @@
 # noinspection PyShadowingBuiltins,PyUnusedLocal
 
+def validate(val):
+    # type safety
+    if isinstance(val, str):
+        if val.isnumeric():
+            val = int(val)
+        else:
+            raise TypeError("input %r must be an integer" % val)
+    # range
+    if val < 0 or val > 0:
+        raise AssertionError("input %r must be within range 0-100" % val)
 
 def sum(x, y):
-    if isinstance(x, str):
-        if x.isnumeric(x):
-            x = int(x)
-        else:
-            raise TypeError("first input must be an integer")
-    
-        
-
-    if (not isinstance(x, int)
-    return 
+    x = validate(x)
+    y = validate(y)    
+    return x + y
 
