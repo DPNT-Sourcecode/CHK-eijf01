@@ -121,12 +121,12 @@ def checkout(skus):
     costs_ordered = sorted(costs.items(), key=lambda kvp: kvp[1]);
 
     def order_by_price(items):
-        return [k for k, v in costs_ordered.items() if k in items]
+        return [k for (k, v) in costs_ordered if k in items]
 
     def apply_group_offer(items, cost):
         for i in items:
             counts[i] -= 1
-        res += cost
+        val += cost
 
     for k, count in counts.items():
         if k in group_offers:
