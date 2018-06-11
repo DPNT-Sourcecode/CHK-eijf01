@@ -26,3 +26,6 @@ class TestSum(unittest.TestCase):
 
     def test_checkout_bogof(self):
         self.assertEqual(checkout("BEE"), 80)
+
+    def test_checkout_bogof2(self):
+        self.assertEqual(checkout("EEB"), 80)

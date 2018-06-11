@@ -28,14 +28,14 @@ def checkout(skus):
 
   # consider offers first
   for k, count in counts.items():
-      #print("considering %r, count %d" % (k, count))
+      print("considering %r, count %d" % (k, count))
       if k in offers:
           # hmm, possible multiple offers.. order matters
           # TODO don't rely on order matters! sort by best deal value
           for quantity, cost, bogof in offers[k]:
-              #print("considering offer on %r, %d for %d" % (k, quantity, cost))
+              print("considering offer on %r, %d for %d" % (k, quantity, cost))
               while count >= quantity:
-                  #print("offer requirements met, %d for %d on %r" % (quantity, cost, k))
+                  print("offer requirements met, %d for %d on %r" % (quantity, cost, k))
                   val += cost
                   count -= quantity
                   counts[k] -= quantity  # outer context
