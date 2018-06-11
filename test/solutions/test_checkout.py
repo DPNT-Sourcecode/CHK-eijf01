@@ -1,3 +1,4 @@
+import unittest
 from lib.solutions.checkout import checkout
 
 

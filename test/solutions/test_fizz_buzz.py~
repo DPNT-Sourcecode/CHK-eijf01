@@ -1,11 +1,7 @@
-import unittest
-
-from lib.solutions.hello import hello
+from lib.solutions.fizz_buzz import fizz_buzz
 
 
 class TestSum(unittest.TestCase):
-    def test_hello(self):
-        self.assertTrue("Hello" in hello("Bob"))
-    def test_hello_no_arg(self):
-        self.assertTrue("Hello" in hello())
+    def test_fizz_buzz(self):
+        self.assertTrue(True)
 

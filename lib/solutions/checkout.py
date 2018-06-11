@@ -2,7 +2,7 @@ import itertools
 import re
 
 def isdirty(s):
-   return True if re.search("[^A-D]") else False;
+   return True if re.search("[^A-D]", s) else False
 
 def clean(s):
    return re.sub("[^A-D]", "")
@@ -20,10 +20,10 @@ def checkout(skus):
   a_skus = sorted(skus.split(''))
 
   val = 0
-  for k, g in a_skus.groupby(a_skus)  # identity lambda as def
+  for k, g in a_skus.groupby(a_skus):  # identity lambda as def
       count = len(list(g))
       # consider offers first
-      if k in offers
+      if k in offers:
           # hmm, possible multiple offers.. order.. best val..
           for quantity, cost in offers[k]:
               print("considering offer on %r, %d for %d" % (k, quantity, cost))

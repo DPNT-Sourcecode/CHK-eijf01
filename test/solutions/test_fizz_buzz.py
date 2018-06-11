@@ -1,3 +1,4 @@
+import unittest
 from lib.solutions.fizz_buzz import fizz_buzz
 
 
