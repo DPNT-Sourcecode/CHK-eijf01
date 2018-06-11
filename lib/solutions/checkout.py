@@ -118,7 +118,7 @@ def checkout(skus):
                     counts[k] -= quantity  # outer context
 
     # group offers
-    costs_ordered = sorted(costs, key=lambda kvp: kvp[1]);
+    costs_ordered = sorted(costs.items(), key=lambda kvp: kvp[1]);
 
     def order_by_price(items):
         return [k for k, v in costs_ordered.items() if k in items]
@@ -133,7 +133,7 @@ def checkout(skus):
             for min_p, cost, p_set in group_offers[k]:
                 # sort set by price descending to ensure most expensive set
                 # is applied first
-                p_set_ordered = reverse(order_by_price(p_set))
+                p_set_ordered = order_by_price(p_set)[::-1]
                 applying_offer = True
                 while applying_offer:
                     gi_purchased_count = 0
