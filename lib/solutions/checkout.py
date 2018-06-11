@@ -18,7 +18,7 @@ def checkout(skus):
   if isdirty(skus):
       return -1
 
-  offers = { 'A': [(5, 200, ''), (3, 130, '') ], 'B': [(2, 45, '')], 'E': [(2, 80, 'B')]}
+  offers = OrderedDict({ 'E': [(2, 80, 'B')], 'A': [(5, 200, ''), (3, 130, '') ], 'B': [(2, 45, '')]})
   costs = { 'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40 }
   a_skus = sorted(list(skus))
 
