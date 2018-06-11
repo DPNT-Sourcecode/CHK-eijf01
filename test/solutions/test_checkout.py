@@ -3,8 +3,14 @@ from lib.solutions.checkout import checkout
 
 
 class TestCheckout(unittest.TestCase):
+
+    p = None
+
+    def setUp(self):
+        (self.prices) = build_state()
+
     def test_checkout(self):
-        self.assertEqual(checkout("AB"), 80)
+        self.assertEqual(checkout("AB"), p['A'] + p['B'])
 
     def test_checkout2(self):
         self.assertEqual(checkout("AAAAA"), 200)
@@ -13,10 +19,10 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout(" A   B "), -1)
 
     def test_checkout_multi(self):
-        self.assertEqual(checkout("ABA"), 130)
+        self.assertEqual(checkout("ABA"), 2*p['A'] + p['B'])
 
     def test_checkout_offer(self):
-        self.assertEqual(checkout("AABBA"), 175)
+        self.assertEqual(checkout("AABBA"), 200 + 45)
 
     def test_checkout_illegal(self):
         self.assertEqual(checkout("pandas"), -1)
@@ -25,28 +31,34 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("Ax"), -1)
 
     def test_checkout_new_product(self):
-        self.assertEqual(checkout("EE"), 80)
+        self.assertEqual(checkout("EE"), 2*p['E'])
 
     def test_checkout_bogof(self):
-        self.assertEqual(checkout("BEE"), 80)
+        self.assertEqual(checkout("BEE"), 2*p['E'])
 
     def test_checkout_bogof2(self):
-        self.assertEqual(checkout("EEB"), 80)
+        self.assertEqual(checkout("EEB"), 2*p['E'])
 
     def test_checkout_bogof_first(self):
-        self.assertEqual(checkout("EEEEBB"), 160)
+        self.assertEqual(checkout("EEEEBB"), 4*p['E'])
 
     def test_checkout_bogof_first2(self):
-        self.assertEqual(checkout("BEBEEE"), 160)
+        self.assertEqual(checkout("BEBEEE"), 4*p['E'])
 
     def test_checkout_bogof_first3(self):
-        self.assertEqual(checkout("ABCDEABCDE"), 280)
+        self.assertEqual(checkout("ABCDEABCDE"),
+            2*p['A'] + p['B'] + 2*p['C'] + 2*p['D'] + 2*p['E'])
 
     def test_checkout_2f(self):
-        self.assertEqual(checkout("FF"), 20)
+        self.assertEqual(checkout("FF"), 2*p['F'])
 
     def test_checkout_offer_2f(self):
-        self.assertEqual(checkout("FFF"), 20)
+        self.assertEqual(checkout("FFF"), 2*p['F'])
+
+    def test_checkout_offers_free_p4(self):
+        self.assertEqual(checkout(
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"),
+            sum(x for x in p.values()))
 
     def test_checkout_offers_free_p4(self):
         self.assertEqual(checkout(

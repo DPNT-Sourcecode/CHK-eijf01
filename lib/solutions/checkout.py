@@ -50,12 +50,21 @@ def checkout(skus):
         'B': [(2, 45)],
         'F': [(3, 20)],
         'H': [(10, 80), (5, 45)],
-        'K': [(2, 150)],
+        'K': [(2, 120)],
         'P': [(5, 200)],
         'Q': [(3, 80)],
         'U': [(4, 120)],
         'V': [(3, 130), (2, 90)]
     }
+    # these items are not part of other offers.. [thank you!]
+    group_offers = {
+        'S': [(3, 45, ['S', 'T', 'X', 'Y' , 'Z' ])],
+        'T': [(3, 45, ['S', 'T', 'X', 'Y' , 'Z' ])],
+        'X': [(3, 45, ['S', 'T', 'X', 'Y' , 'Z' ])],
+        'Y': [(3, 45, ['S', 'T', 'X', 'Y' , 'Z' ])],
+        'Z': [(3, 45, ['S', 'T', 'X', 'Y' , 'Z' ])]
+    }
+
     a_skus = sorted(list(skus))
 
     # group and count
@@ -107,6 +116,10 @@ def checkout(skus):
                     val += cost
                     count -= quantity
                     counts[k] -= quantity  # outer context
+
+    # single item costs only remain
+    for k, count in counts.items():
+        val += (count * costs[k])
 
     # single item costs only remain
     for k, count in counts.items():
