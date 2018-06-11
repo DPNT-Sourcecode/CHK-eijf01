@@ -18,8 +18,8 @@ def build_state():
             for line in fo:
                 tks = line.rstrip('\n').split(':')
                 #if debug > 1:
-                print("adding product %r at price %d" % (*tks))
-                prices[tks[0]] = tks[1]
+                print("adding product %r at price %s" % (tks[0], tks[1]))
+                prices[tks[0]] = int(tks[1])
         return prices
     return (build_prices())  # state tuple of prices, ...
 
@@ -35,7 +35,7 @@ def checkout(skus):
         return -1
 
     # build supermarket pricing / offers state
-    costs = build_state()[0]
+    (costs) = build_state()
 
     # TODO: external flat file with simple format for update!
     freebies = {
