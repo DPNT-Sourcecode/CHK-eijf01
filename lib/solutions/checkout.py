@@ -82,10 +82,12 @@ def checkout(skus):
         if k in freebies:
             for quantity, cost, free in freebies[k]:
                 if debug:
-                    print("considering freebie offer on %r, %d for %d" % (k, quantity, cost))
+                    print("considering freebie offer on %r, %d for %d"
+                          % (k, quantity, cost))
                 while count >= quantity:
                     if debug:
-                        print("offer requirements met, %d for %d on %r" % (quantity, cost, k))
+                        print("offer requirements met, %d for %d on %r"
+                              % (quantity, cost, k))
                     val += cost
                     count -= quantity
                     counts[k] -= quantity  # outer context
@@ -105,10 +107,12 @@ def checkout(skus):
             # TODO don't rely on order matters! sort by best deal value
             for quantity, cost in offers[k]:
                 if debug:
-                    print("considering offer on %r, %d for %d" % (k, quantity, cost))
+                    print("considering offer on %r, %d for %d"
+                          % (k, quantity, cost))
                 while count >= quantity:
                     if debug:
-                       print("offer requirements met, %d for %d on %r" % (quantity, cost, k))
+                        print("offer requirements met, %d for %d on %r"
+                              % (quantity, cost, k))
                     val += cost
                     count -= quantity
                     counts[k] -= quantity  # outer context
