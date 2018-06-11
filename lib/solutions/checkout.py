@@ -134,10 +134,12 @@ def checkout(skus):
                 gi_purchased = []
                 applied = False
                 for i in p_set_ordered:
+                    print("consider %r for group offer" % i)
                     if not i in counts:
                         continue
                     while counts[i] > 0:
                         # drain most expensive first
+                        print("adding %r for group offer" % i)
                         gi_purchased_count += 1
                         gi_purchased.append(i)
                         if gi_purchased_count == min_p:
