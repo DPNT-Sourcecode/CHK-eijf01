@@ -2,11 +2,21 @@ from itertools import groupby
 import re
 
 debug = 0
-
+data_prices = "data.prices.txt"
 
 def isdirty(s):
     return True if re.search("[^A-Z]", s) else False
 
+
+def build_state():
+    def build_prices():
+        prices = {}
+        with fo = open(os.join(os.pwd, "data", data_prices):
+            while line fo.readline()
+                tks = line.split(':')
+                prices[tks[0]] = tks[1]
+        return prices
+    return (build_prices())  # state tuple of prices, ...
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -17,6 +27,9 @@ def checkout(skus):
 
     if isdirty(skus):
         return -1
+
+    # build supermarket pricing / offers state
+    costs = build_state(data_prices)[0]
 
     # TODO: external flat file with simple format for update!
     freebies = {
@@ -35,35 +48,6 @@ def checkout(skus):
         'Q': [(3, 80)],
         'U': [(4, 120)],
         'V': [(3, 130), (2, 90)]
-    }
-    # TODO: external flat file with simple format for update!
-    costs = {
-       'A': 50,
-       'B': 30,
-       'C': 20,
-       'D': 15,
-       'E': 40,
-       'F': 10,
-       'G': 20,
-       'H': 10,
-       'I': 35,
-       'J': 60,
-       'K': 80,
-       'L': 90,
-       'M': 15,
-       'N': 40,
-       'O': 10,
-       'P': 50,
-       'Q': 30,
-       'R': 50,
-       'S': 30,
-       'T': 20,
-       'U': 40,
-       'V': 50,
-       'W': 20,
-       'X': 90,
-       'Y': 10,
-       'Z': 50
     }
     a_skus = sorted(list(skus))
 
