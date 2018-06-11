@@ -1,6 +1,7 @@
 from itertools import groupby
 import re
 import sys
+import os
 
 debug = 0
 data_prices = "data.prices.txt"
@@ -17,7 +18,7 @@ def build_state():
             for line in fo:
                 tks = line.split(':')
                 #if debug > 1:
-                print("adding product %r at price %d")
+                print("adding product %r at price %d" % tks)
                 prices[tks[0]] = tks[1]
         return prices
     return (build_prices())  # state tuple of prices, ...
@@ -34,7 +35,7 @@ def checkout(skus):
         return -1
 
     # build supermarket pricing / offers state
-    costs = build_state(data_prices)[0]
+    costs = build_state()[0]
 
     # TODO: external flat file with simple format for update!
     freebies = {
