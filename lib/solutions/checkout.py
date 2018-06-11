@@ -37,6 +37,7 @@ def checkout(skus):
                   #print("offer requirements met, %d for %d on %r" % (quantity, cost, k))
                   val += cost
                   count -= quantity
+                  counts[k] -= quantity  # outer context
                   freebies = list(bogof)
                   if len(freebies) > 0:
                       # reduce count(s) for given items
