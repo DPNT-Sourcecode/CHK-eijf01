@@ -1,5 +1,4 @@
 from itertools import groupby
-from collections import OrderedDict
 import re
 
 debug = 0
