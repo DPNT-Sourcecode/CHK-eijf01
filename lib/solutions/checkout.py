@@ -12,6 +12,7 @@ def isdirty(s):
 # skus = unicode string
 def checkout(skus):
 
+  print("considering skus %r" % skus)
   if isdirty(skus):
       return -1
 
@@ -49,4 +50,5 @@ def checkout(skus):
   for k, count in counts.items():
       val += (count * costs[k])
 
+  print("returning %r for %r" % (val, skus))
   return val
