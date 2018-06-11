@@ -21,7 +21,7 @@ def checkout(skus):
       'R': [(3, 150, 'Q')]
   }
   #TODO: external flat file with simple format for update!
-  offers = { 
+  offers = {
       'A': [(5, 200), (3, 130)],
       'B': [(2, 45)],
       'F': [(3, 20)],
