@@ -51,5 +51,5 @@ def checkout(skus):
   for k, count in counts.items():
       val += (count * costs[k])
 
-  print("returning %r for %r" % (val, skus))
+#  print("returning %r for %r" % (val, skus))
   return val
