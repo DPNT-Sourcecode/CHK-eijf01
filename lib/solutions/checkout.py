@@ -129,24 +129,25 @@ def checkout(skus):
                 # sort set by price descending to ensure most expensive set
                 # is applied first
                 p_set_ordered = order_by_price(p_set)[::-1]
-                applying_offer = True
-                while applying_offer:
-                    gi_purchased_count = 0
-                    gi_purchased = []
-                    applied = False
-                    for i in p_set_ordered:
-                        while counts[i] > 0:
-                            # drain most expensive first
-                            gi_purchased_count += 1
-                            gi_purchased.append(i)
-                            if gi_purchased_count == min_p:
-                                for i in gi_purchased:
-                                    counts[i] -= 1
-                                val += cost
-                                applied = True
-                    if applied:
-                        # out of relevant basket items
-                        applying_offer = False
+
+                gi_purchased_count = 0
+                gi_purchased = []
+                applied = False
+                for i in p_set_ordered:
+                    if not i in counts:
+                        continue
+                    while counts[i] > 0:
+                        # drain most expensive first
+                        gi_purchased_count += 1
+                        gi_purchased.append(i)
+                        if gi_purchased_count == min_p:
+                            print("applying group offer")
+                            for i in gi_purchased:
+                                counts[i] -= 1
+                            val += cost
+                            # reset
+                            gi_purchased_count = 0
+                            gi_purchased = []
 
     # single item costs only remain
     for k, count in counts.items():
