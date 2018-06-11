@@ -134,8 +134,8 @@ def checkout(skus):
                 # sort set by price descending to ensure most expensive set
                 # is applied first
                 p_set_ordered = reverse(order_by_price(p_set))
-                applying_offer = True;
-                while applying_offer
+                applying_offer = True
+                while applying_offer:
                     gi_purchased_count = 0
                     gi_purchased = []
                     applied = False

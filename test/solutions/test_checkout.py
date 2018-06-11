@@ -78,11 +78,7 @@ class TestCheckout(unittest.TestCase):
             (80 + 120 + 150))
 
     def test_checkout_group_offers_one_p5(self):
-        self.assertEqual(checkout("STXYZ"), 45)
+        self.assertEqual(checkout("STXYZ"), 45 + self.p['Y'] + self.p['X'])
 
     def test_checkout_group_offers_one_plus_p5_(self):
-        self.assertEqual(checkout("SSTTXXYYZZ")
-
-    def test_checkout_group_offers_two_p5(self):
-        self.assertEqual(checkout("SSTTXXYYZZ", )
-
+        self.assertEqual(checkout("SSTTXXZZ"), 45 + 45 + 2 * self.p['X'])
