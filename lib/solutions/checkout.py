@@ -135,18 +135,23 @@ def checkout(skus):
                 applied = False
                 import pdb; pdb.set_trace()
                 for i in p_set_ordered:
-                    print("consider %r for group offer" % i)
+                    if debug:
+                        print("consider %r for group offer" % i)
                     if not i in counts:
                         continue
-                    while counts[i] > 0:
+                    count_item = counts[i]
+                    while count_item > 0:
                         # drain most expensive first
-                        print("adding %r for group offer" % i)
+                        if debug:
+                            print("adding %r for group offer" % i)
                         gi_purchased_count += 1
                         gi_purchased.append(i)
+                        count_item -= 1
                         if gi_purchased_count == min_p:
-                            print("applying group offer for %r" % gi_purchased)
+                            if debug:
+                                print("applying group offer for %r"
+                                      % gi_purchased)
                             for i in gi_purchased:
-                    
                                 counts[i] -= 1
                             val += cost
                             # reset
