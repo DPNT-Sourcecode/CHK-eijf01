@@ -19,5 +19,7 @@ class TestSum(unittest.TestCase):
         self.assertEqual(checkout("pandas"), -1)
 
     def test_checkout_illegal2(self):
-        self.assertEqual(checkout("AE"), -1)
+        self.assertEqual(checkout("AX"), -1)
 
+    def test_checkout_bogof(self):
+        self.assertEqual(checkout("BEE"), 80)
