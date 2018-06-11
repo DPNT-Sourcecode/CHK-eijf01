@@ -143,7 +143,7 @@ def checkout(skus):
                         gi_purchased_count += 1
                         gi_purchased.append(i)
                         if gi_purchased_count == min_p:
-                            print("applying group offer")
+                            print("applying group offer for %r" % gi_purchased)
                             for i in gi_purchased:
                                 counts[i] -= 1
                             val += cost
