@@ -3,7 +3,7 @@ import re
 import sys
 import os
 
-debug = 0
+debug = 1
 data_prices = "data.prices.txt"
 
 def isdirty(s):
