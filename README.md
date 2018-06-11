@@ -1,19 +1,13 @@
-# tdl-runner-csharp
+# tdl-warmup-python
 
-The C# (.Net) challenge runner
 
 ## 1. Requirements
 
-IDE
-- `Microsoft Visual Studio 2015`
-- `Microsoft Visual Studio 2017`
-- `JetBrains Rider`
-
-.NET Framework
-- `4.5`
+- `Python 2.7`
+- `pip`
 
 ## 2. How to start
 
-- Open solution `befaster.sln`
-- In solution open `BeFaster.App/SendCommandToServer.cs`
+- Install dependencies `pip install -r requirements.txt`
+- Open `lib/send_command_to_server.py`
 - Read the comments as documentation, they will guide through the rest of the setup
