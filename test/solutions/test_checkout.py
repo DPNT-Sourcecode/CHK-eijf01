@@ -22,7 +22,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout("ABA"), 2*self.p['A'] + self.p['B'])
 
     def test_checkout_offer(self):
-        self.assertEqual(checkout("AABBA"), 200 + 45)
+        self.assertEqual(checkout("AABBA"), 130 + 45)
 
     def test_checkout_illegal(self):
         self.assertEqual(checkout("pandas"), -1)
