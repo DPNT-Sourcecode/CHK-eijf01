@@ -11,7 +11,7 @@ def isdirty(s):
 def build_state():
     def build_prices():
         prices = {}
-        with fo = open(os.join(os.pwd, "data", data_prices):
+        with fo = open(os.join(os.pwd, "data", data_prices), 'r'):
             while line fo.readline()
                 tks = line.split(':')
                 prices[tks[0]] = tks[1]
