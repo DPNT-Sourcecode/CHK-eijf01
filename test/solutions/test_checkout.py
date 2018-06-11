@@ -1,5 +1,5 @@
 import unittest
-from lib.solutions.checkout import checkout
+from lib.solutions.checkout import checkout, build_state
 
 
 class TestCheckout(unittest.TestCase):
@@ -7,7 +7,7 @@ class TestCheckout(unittest.TestCase):
     p = None
 
     def setUp(self):
-        (self.prices) = build_state()
+        (self.p) = build_state()
 
     def test_checkout(self):
         self.assertEqual(checkout("AB"), p['A'] + p['B'])
