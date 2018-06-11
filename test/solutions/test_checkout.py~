@@ -1,7 +1,7 @@
+from lib.solutions.checkout import checkout
 
-# noinspection PyUnusedLocal
-# friend_name = unicode string
-def hello(friend_name = "Anonymous"):
-    s = "Hello, " + friend_name + "!"
-    print(s)
-    return s
+
+class TestSum(unittest.TestCase):
+    def test_checkout(self):
+        self.assertTrue(True)
+

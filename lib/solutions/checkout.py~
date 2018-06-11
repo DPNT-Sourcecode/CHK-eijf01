@@ -23,6 +23,7 @@ def checkout(skus):
       count = len(list(g))
       # consider offers first
       if k in offers
+          # hmm, possible multiple offers.. order.. best val..
           for o in p_offers = of
           while count > 
 

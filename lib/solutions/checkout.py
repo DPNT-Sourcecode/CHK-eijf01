@@ -13,7 +13,8 @@ def clean(s):
 def checkout(skus):
 
   if isdirty(skus):
-      
+      return -1
+
   offers = { 'A': [(3, 139)], 'B': [(2, 45)]}
   costs = { 'A': 50, 'B': 30, 'C': 20, 'D': 15 }
   a_skus = sorted(skus.split(''))
@@ -24,8 +25,11 @@ def checkout(skus):
       # consider offers first
       if k in offers
           # hmm, possible multiple offers.. order.. best val..
-          for o in p_offers = of
-          while count > 
-
+          for quantity, cost in offers[k]:
+              print("considering offer on %r, %d for %d" % (k, quantity, cost))
+              while count > quanity:
+                  val += cost
+                  count -= quantity
+      # single item cost
       val += (count * costs[k])
-
+  return val
