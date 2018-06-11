@@ -6,6 +6,9 @@ class TestSum(unittest.TestCase):
     def test_checkout(self):
         self.assertEqual(checkout("AB"), 80)
 
+    def test_checkout2(self):
+        self.assertEqual(checkout("AAAAA"), 200)
+
     def test_checkout_dirty_input(self):
         self.assertEqual(checkout(" A   B "), -1)
 

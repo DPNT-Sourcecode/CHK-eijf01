@@ -15,7 +15,7 @@ def checkout(skus):
   if isdirty(skus):
       return -1
 
-  offers = { 'A': [(3, 130, '')], 'B': [(2, 45, '')], 'E': [(2, 80, 'B')]}
+  offers = { 'A': [(5, 200, ''), (3, 130, '') ], 'B': [(2, 45, '')], 'E': [(2, 80, 'B')]}
   costs = { 'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40 }
   a_skus = sorted(list(skus))
 
@@ -30,7 +30,8 @@ def checkout(skus):
   for k, count in counts.items():
       #print("considering %r, count %d" % (k, count))
       if k in offers:
-          # hmm, possible multiple offers.. order.. best val..
+          # hmm, possible multiple offers.. order matters
+          # TODO don't rely on order matters! sort by best deal value
           for quantity, cost, bogof in offers[k]:
               #print("considering offer on %r, %d for %d" % (k, quantity, cost))
               while count >= quantity:
