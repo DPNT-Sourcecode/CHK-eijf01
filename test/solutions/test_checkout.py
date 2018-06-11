@@ -33,3 +33,6 @@ class TestCheckout(unittest.TestCase):
     def test_checkout_bogof2(self):
         self.assertEqual(checkout("EEB"), 80)
 
+    def test_checkout_bogof_first(self):
+        self.assertEqual(checkout("EEEEBB"), 160)
+
